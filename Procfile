@@ -1,1 +1,1 @@
-web: gunicorn --access-logfile - "app:create_app()" --reload
+web: python app.py

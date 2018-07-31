@@ -1,25 +1,18 @@
 from flask import Flask, render_template
 import requests
 
-uri = 'http://dev.waziup.io:800/api/v1/domains/waziup/sensors/Kumasi_Hive_One_Sensor71'
+app = Flask(__name__)
 
 
-def create_app(settings_override=None):
-    """
-    Create a Flask application using the app factory pattern.
+@app.route('/')
+def index():
+    data = requests.get('http://dev.waziup.io:800/api/v1/domains/waziup/sensors/Kumasi_Hive_One_Sensor71')
 
-    :param settings_override: Override settings
-    :return: Flask app
-    """
-    app = Flask(__name__, instance_relative_config=True)
+    data_json = data.json()
+    measurements = data_json.get('measurements')
 
-    @app.route('/')
-    def index():
-        data = requests.get(uri)
+    return render_template('index.html', measurements=measurements)
 
-        data_json = data.json()
-        measurements = data_json.get('measurements')
 
-        return render_template('index.html', measurements=measurements)
-
-    return app
+if __name__ == '__main__':
+    app.run(debug=True)
