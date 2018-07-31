@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</head>
+<body>
+	<div class="container">
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Sensor 1</th>
+							<th>Sensor 2</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Device ID</th>
+							<td>{{ measurements[0].get('id') }}</td>
+							<td>{{ measurements[1].get('id') }}</td>
+						</tr>
+						<tr>
+							<th>Last Value</th>
+							<td>{{ measurements[0].get('last_value') }}</td>
+							<td>{{ measurements[1].get('last_value') }}</td>
+						</tr>
+						<tr>
+							<th>Timestamp</th>
+							<td>
+								{{ measurements[0].get('timestamp')[0:9] }} --
+								{{ measurements[0].get('timestamp')[11:16] }}
+							</td>
+							<td>
+								{{ measurements[1].get('timestamp')[0:9] }} --
+								{{ measurements[1].get('timestamp')[11:16] }}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- <div class="wrapper">
+					<div class="header">
+						<div class="top">
+							<span class="brand">Visual Aid</span>
+							<svg width="4px" height="17px" viewBox="0 0 4 17" class="more-icon pull-right">
+							    <g id="Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="24" font-family="material" font-weight="normal">
+							        <g id="Dashboard" transform="translate(-336.000000, -19.000000)" fill="#FFFFFF">
+							            <g id="Header">
+							                <text id="more_vert-material">
+							                    <tspan x="326" y="36"></tspan>
+							                </text>
+							            </g>
+							        </g>
+							    </g>
+							</svg>
+						</div>
+
+						<div class="bottom">
+							<ul class="nav nav-tabs nav-justified" role="tablist">
+								<li class="active" role="presentation">
+									<a href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">Dashboard</a>
+								</li>
+								<li role="presentation">
+									<a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="tab-content">
+						<div class="tab-pane active fade in" id="dashboard" role="tabpanel">
+
+						</div>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>
